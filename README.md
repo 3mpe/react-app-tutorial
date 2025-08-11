@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Teknik Gereksinimler ve Kullanılan Teknolojiler
 
-## Getting Started
+Proje, talep edilen tüm teknik gereksinimleri karşılamaktadır:
 
-First, run the development server:
+- **Framework:** Next.js (App Router)
+- **Kütüphane:** React
+- **Dil:** JavaScript (ES6+)
+- **Stil:** SASS (SCSS) ve Bootstrap 5
+- **Veri Kaynağı:** Proje içine eklenmiş `public/hotels.json` mock dosyası.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Uygulanan Özellikler
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Temel Gereksinimler
+- **Component Yapısı:** Uygulama, yeniden kullanılabilir ve yönetilebilir component'lere ( `HotelCard`, `HotelList`, `Pagination` vb.) ayrılmıştır.
+- **Servis Katmanı Mimarisi:**
+    - `api.service.js`: Tüm ağ istekleri için `GET`, `POST` gibi temel metodları içeren genel bir motor.
+    - `hotel.service.js`: Sadece otellerle ilgili veri işlemlerini yöneten, `api.service`'i kullanan özel bir servis.
+- **Sunucu Taraflı Veri Yükleme (SSR):** Next.js App Router'ın varsayılan sunucu component'leri sayesinde, otel verileri sayfa render edilmeden önce sunucu tarafında çekilerek performansı ve SEO uyumluluğunu artırır.
+- **Responsive Tasarım:** Arayüz, Bootstrap ve özel media query'ler kullanılarak mobil, tablet ve masaüstü cihazlarda sorunsuz bir kullanıcı deneyimi sunar.
+- **Lazy Loading ile Görsel Optimizasyonu:** Otel resimleri, `next/image` component'i kullanılarak otomatik olarak optimize edilir ve kullanıcı ekranına girmeden yüklenmez
+- **Pagination Desteği:** Otel listesi, kullanıcı dostu bir sayfalama (pagination) yapısıyla sunularak tüm verinin tek seferde yüklenmesi engellenir.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Kurulum ve Çalıştırma
 
-To learn more about Next.js, take a look at the following resources:
+Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Projeyi Klonlayın:**
+    ```bash
+    git clone [PROJE_REPO_URL]
+    cd [PROJE_KLASOR_ADI]
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Gerekli Paketleri Yükleyin:**
+    Proje, `npm` paket yöneticisini kullanır. Gerekli tüm bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  **Geliştirme Sunucusunu Başlatın:**
+    Kurulum tamamlandıktan sonra, geliştirme sunucusunu başlatmak için aşağıdaki komutu çalıştırın:
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Uygulamayı Görüntüleyin:**
+    Sunucu başarıyla başlatıldığında, web tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini ziyaret ederek uygulamayı görebilirsiniz.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
